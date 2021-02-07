@@ -1,5 +1,6 @@
-package com.jkapps.givemeagif.data.api
+package com.jkapps.givemeagif.di
 
+import com.jkapps.givemeagif.data.api.GifService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -37,5 +38,6 @@ object NetworkModule {
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
-    val gifService = retrofit.create(GifService::class.java)
+    val gifService = retrofit.create(
+        GifService::class.java)
 }

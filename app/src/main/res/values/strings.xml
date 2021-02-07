@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GiveMeAGif</string>
     <string name="description">Описание</string>
+    <string name="error_text">Произошла ошибка при загрузке данных. Проверьте подключение к сети.</string>
 </resources>

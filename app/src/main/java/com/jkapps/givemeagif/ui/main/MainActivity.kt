@@ -2,6 +2,7 @@ package com.jkapps.givemeagif.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.bumptech.glide.Glide
@@ -42,6 +43,12 @@ class MainActivity : AppCompatActivity() {
                 .load(it.gifUrl?.replace("http", "https"))
                 .centerCrop()
                 .into(binding.ivGif)
+        }
+        viewModel.error.observe(this) {
+           binding.tvError.isVisible = it
+        }
+        viewModel.isLoading.observe(this) {
+            binding.pbLoading.isVisible = it
         }
         viewModel.isButtonEnable.observe(this) {
             binding.btnPrev.isEnabled = it
