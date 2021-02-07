@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface GifService {
 
-    @GET("/random?json=true")
+    @GET("/random")
     suspend fun getRandomGif() : Gif
 }

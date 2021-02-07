@@ -8,4 +8,4 @@ data class Gif(
     @field:Json(name = "description")
     val description: String,
     @field:Json(name = "gifURL")
-    val gifUrl : String)
+    val gifUrl : String?)
