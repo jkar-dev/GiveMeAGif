@@ -3,6 +3,6 @@
     android:shape="oval">
 
     <size android:width="100dp" android:height="100dp"/>
-    <solid android:color="@color/cardview_light_background"/>
+    <solid android:color="?attr/colorSurface"/>
 
 </shape>
