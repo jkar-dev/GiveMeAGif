@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.jkapps.givemeagif.App
 import com.jkapps.givemeagif.MyViewModelFactory
+import com.jkapps.givemeagif.R
 import com.jkapps.givemeagif.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .load(it.gifUrl?.replace("http", "https"))
                 .centerCrop()
+                .placeholder(R.drawable.ic_placeholder)
                 .into(binding.ivGif)
         }
         viewModel.error.observe(this) {
