@@ -2,6 +2,7 @@ package com.jkapps.givemeagif.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -47,13 +48,40 @@ class MainActivity : AppCompatActivity() {
                 .into(binding.ivGif)
         }
         viewModel.error.observe(this) {
-           binding.tvError.isVisible = it
+            showOrHideError(it)
         }
         viewModel.isLoading.observe(this) {
             binding.pbLoading.isVisible = it
         }
         viewModel.isButtonEnable.observe(this) {
             binding.btnPrev.isEnabled = it
+        }
+    }
+
+    private fun showOrHideError(showError : Boolean) {
+        if (showError) {
+            binding.tvError.apply {
+                isVisible = true
+                    // to get the height value when an error is showing for the first time
+                    this.doOnPreDraw {
+                        animate()
+                            .translationY(-height.toFloat())
+                            .setDuration(0)
+                            .start()
+                        animate()
+                            .translationY(0f)
+                            .setDuration(300)
+                            .start()
+                    }
+            }
+        } else {
+            binding.tvError.apply {
+                animate()
+                    .translationY(-height.toFloat())
+                    .setDuration(300)
+                    .withEndAction { isVisible = false }
+                    .start()
+            }
         }
     }
 
