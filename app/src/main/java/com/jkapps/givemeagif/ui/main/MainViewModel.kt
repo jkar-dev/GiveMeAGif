@@ -42,7 +42,7 @@ class MainViewModel(private val repository: GifRepository) : ViewModel() {
 
                 if (previousGifs.isNotEmpty()) _isButtonEnable.value = true
             } catch (e: Exception) {
-                _isErrorDisplaying.value = true
+                if (error.value == null || error.value == false) _isErrorDisplaying.value = true
                 _isLoading.value = false
             }
         }
