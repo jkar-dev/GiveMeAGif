@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 .placeholder(R.drawable.ic_placeholder)
                 .into(binding.ivGif)
         }
-        viewModel.error.observe(this) {
+        viewModel.isErrorDisplaying.observe(this) {
             showOrHideError(it)
         }
         viewModel.isLoading.observe(this) {
